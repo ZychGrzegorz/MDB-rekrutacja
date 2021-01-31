@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    'js/mdb': Path.resolve(__dirname, '../../src/js/index.js'),
-    'css/mdb': Path.resolve(__dirname, '../../src/scss/index.scss'),
+    'js/mdb': Path.resolve(__dirname, '../../src/static/js'),
+    'css/mdb': Path.resolve(__dirname, '../../src/static/css/index.css'),
   },
   output: {
     library: 'mdb',
@@ -18,8 +18,11 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../../src/mdb/index.html') },
-      { from: Path.resolve(__dirname, '../../src/img'), to: 'img' },
+
+      {
+        from: Path.resolve(__dirname, '../../src/img'),
+        to: 'img'
+      },
     ]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
@@ -33,8 +36,7 @@ module.exports = {
     },
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.mjs$/,
         include: /node_modules/,
         type: 'javascript/auto',
