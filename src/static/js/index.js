@@ -70,6 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   router();
 });
-let indexConst = 'lalala';
-export { indexConst };
+
+let indexConst = ['lalala'];
+
+const addToIndex = (el) => {
+  indexConst.push(el);
+  console.log(indexConst);
+};
+addToIndex(13);
 console.log(indexConst);
+export { addToIndex };

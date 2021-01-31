@@ -1,15 +1,14 @@
 import AbstractView from './AbstractView.js';
-import { indexConst } from '../index.js';
+import { addToIndex } from '../index.js';
 export default class extends AbstractView {
   constructor(params) {
     super(params);
     this.setTitle('Books View');
   }
-  indexConst = indexConst + 'trolrol';
+  //   indexConst = indexConst + 'trolrol';
 
   async getHtml() {
-    console.log(indexConst + 'bababab');
-    console.log(this.params.id);
+    addToIndex('ViewFromBooksView');
     return `
     <h1>Welcome Books</h1>
     <p>POOOOOOOOOOST</p>
