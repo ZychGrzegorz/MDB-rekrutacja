@@ -1,7 +1,8 @@
-import Dashboard from './views/Dashboard.js';
+import DashboardView from './views/DashboardView.js';
 import Books from './views/Books.js';
-import BooksView from './views/BooksView.js';
-import Login from './views/Login.js';
+import BookView from './views/BookView.js';
+import LoginView from './views/LoginView.js';
+import RegisterView from './views/RegisterView.js'
 
 const pathToRegex = (path) =>
   new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
@@ -24,7 +25,7 @@ const router = async () => {
   const routes = [
     {
       path: '/',
-      view: Dashboard,
+      view: DashboardView,
     },
 
     {
@@ -33,11 +34,15 @@ const router = async () => {
     },
     {
       path: '/books/:id',
-      view: BooksView,
+      view: BookView,
     },
     {
       path: '/login',
-      view: Login,
+      view: LoginView,
+    },
+    {
+      path: '/register',
+      view: RegisterView,
     },
   ];
   //test each route for potetntial match
@@ -77,6 +82,6 @@ const addToIndex = (el) => {
   indexConst.push(el);
   console.log(indexConst);
 };
-addToIndex(13);
+// addToIndex(13);
 console.log(indexConst);
 export { addToIndex };

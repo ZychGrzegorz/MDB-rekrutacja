@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     path: Path.join(__dirname, '../dist'),
-    filename: '[name].min.js',
+    filename: './static/[name].js'
   },
   plugins: [
     new Webpack.ProvidePlugin({
@@ -23,7 +23,9 @@ module.exports = {
     ]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+    path: Path.join(__dirname, '../dist'),
+
+      filename: './static/[name].css',
     }),
   ],
   resolve: {
