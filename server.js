@@ -12,7 +12,7 @@ app.get('/*', (req, res) => {
   // res.sendFile(path.resolve(__dirname, 'src', 'index.html'));
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
-app.listen(process.env.port || 5080, () => {
+app.listen(process.env.PORT || 5080, () => {
   console.log('server is running');
 });
 // app.listen(5080, () => {
