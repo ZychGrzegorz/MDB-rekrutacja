@@ -6,16 +6,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    'js/index': Path.resolve(__dirname, '../src/js/index.js'),
-    'css/index': Path.resolve(__dirname, '../src/scss/index.scss'),
+    'js/index': Path.resolve(__dirname, '../src/static/js/'),
+    'css/index': Path.resolve(__dirname, '../src/static/css/index.css'),
   },
   output: {
     path: Path.join(__dirname, '../dist'),
-    filename: '[name].min.js',
+    filename: './static/[name].js'
   },
   plugins: [
     new Webpack.ProvidePlugin({
-      'mdb': 'mdb',
+      mdb: 'mdb',
     }),
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../src/index.html') },
@@ -23,13 +23,15 @@ module.exports = {
     ]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+    path: Path.join(__dirname, '../dist'),
+
+      filename: './static/[name].css',
     }),
   ],
   resolve: {
     alias: {
       '~': Path.resolve(__dirname, '../src'),
-      'mdb': Path.join(__dirname, '../node_modules/mdb-ui-kit'),
+      mdb: Path.join(__dirname, '../node_modules/mdb-ui-kit'),
     },
   },
   module: {
@@ -50,7 +52,7 @@ module.exports = {
       },
       {
         test: /\.s?css/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
   },
