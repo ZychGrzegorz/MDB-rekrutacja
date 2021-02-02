@@ -1,17 +1,19 @@
 import AbstractView from './AbstractView.js';
+
 import {} from '../index.js';
+
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle('Books View');
+    this.setTitle('You have been signed out');
   }
 
   async getHtml() {
-    addToIndex('ViewFromBooksView');
     return `
-    <h1>Welcome Books</h1>
-    <p>POOOOOOOOOOST</p>
-    <a href='/books' class="nav__link" data-link>books</a>
+    <div class=" container login-box mt-3 formContainer">
+        <h1>You have been signed out</h1>
+        
+    </div>
       `;
   }
 }
