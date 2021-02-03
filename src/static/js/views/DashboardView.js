@@ -20,7 +20,7 @@ export default class extends AbstractView {
               </div>
               <div class='inputField userInput'>
                 <label for='author' class='authorLbl inputLbl'>Author:</label>
-                <input type='text' id='author' class='input inputAuthor'>
+                <input type='text' id='author' class='input inputAuthor' required>
               </div>
               <div class='inputField userInput'>
               <label for='category' class='selectLbl inputLbl'>Category:</label>
@@ -47,8 +47,22 @@ export default class extends AbstractView {
           </form>
           </div>
           <div class='col-md-6'>
-          <h4 class='formTitle'>Your collection</h4>
-            <p>druga</p>
+          <h4 class='formTitle'>Your collection:</h4>
+          <label for='selectSort' class='selectSortLbl inputLbl'>Sort by:</label>
+            <select class='selectSort' id='selectSort' name='selectSort'>
+                  <option value='title' selected>Title</option>
+                  <option value='author'>Author</option>
+                  <option value='category'>Category</option>
+                  <option value='priority'>Priority</option>
+            </select>
+            </br>
+            <div class='searchInputContainer'>
+              <label for='inputSearch' class='inputSearchLbl'>Search: </label>
+              <input type='text' id='inputSearch' class='input inputSearch'>
+            </div>
+            <div class='container booksCollectionContainer'>
+            
+            </div>
           </div>
       </div>
   </div>

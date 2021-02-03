@@ -12,6 +12,7 @@ import { dashboardScript } from './logic/dashboardScript.js';
 import LogoutView from './views/LogoutView.js';
 import { noPageScript } from './logic/noPageScript.js';
 import { bookScript } from './logic/bookScript.js';
+import { booksScript } from './logic/booksScript.js';
 
 const authNav = document.querySelectorAll('.authNav');
 const nonAuthNav = document.querySelectorAll('.nonAuthNav');
@@ -70,7 +71,7 @@ const router = async () => {
     },
 
     {
-      path: '/books',
+      path: '/search',
       view: BooksView,
     },
     {
@@ -115,8 +116,8 @@ const router = async () => {
   const view = new match.route.view(getParams(match));
 
   document.querySelector('#app').innerHTML = await view.getHtml();
-
-  if (location.pathname.match('/book/(.+)$')) {
+  // console.log('/book/\\w*');
+  if (location.pathname.match('/book/(.+)')) {
     bookScript();
   } else {
     switch (location.pathname) {
@@ -130,6 +131,10 @@ const router = async () => {
       }
       case '/signout': {
         logoutScript();
+        break;
+      }
+      case '/search': {
+        booksScript();
         break;
       }
       case '/': {
