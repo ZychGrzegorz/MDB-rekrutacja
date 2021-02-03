@@ -29,11 +29,11 @@ const registerScript = () => {
               Name: name,
               Email: email,
               Password: password,
-              BooksCategory: ['crime story', 'sci fi', 'fantasy', 'poetry', 'drama', 'science'],
+              BooksCategory: ['Crime story', 'Sci fi', 'Fantasy', 'Poetry', 'Drama', 'Science'],
               BooksCollection: [],
             })
             .then(() => {
-              console.log('succes');
+              console.log('success');
               navigateTo('/signin');
             })
             .catch((err) => {

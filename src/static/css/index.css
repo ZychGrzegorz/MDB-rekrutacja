@@ -140,6 +140,66 @@ a {
 .inputField.userInput.lastUserInput{
     margin-top: 10px;
 }
+
+.booksCollectionContainer{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid red; */
+
+}
+.containerBook{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 10px auto 10px 0px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.bookData{
+    display: flex;
+    flex-direction: column;
+    /* font-size: 75%; */
+    font-weight: normal;
+    max-width: 75%;
+    overflow: hidden;
+}
+.bookData span{
+    white-space:nowrap
+}
+
+.bookActionsContainer{
+    display: flex;
+    vertical-align: middle;
+    flex-basis: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnEdit, .btnDelete{
+    /* flex-basis: auto; */
+    margin: 5px;
+    height: 20px; width: auto;
+}
+.btnEdit{
+    background-image: url('https://www.flaticon.com/svg/vstatic/svg/1159/1159633.svg?token=exp=1612374447~hmac=369c4acd7e8cb17ec93089def6b514a6');
+}
+.searchInputContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.inputSearchLbl{
+    margin-bottom: 1%;
+    margin-top: auto;
+}
+.inputSearch{
+    max-width: 80%;
+    overflow: hidden;
+}
+
+
+
 @media (max-width:540px){
     .nav{
         justify-content: center;
