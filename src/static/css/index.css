@@ -1,35 +1,160 @@
 body {
     --nav-width: 200px;
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 18px;
+    line-height: 1;
 }
 
 .nav {
-    top: 0;
+    /* z-index: -1 */
+    /* visibility: hidden; */
+    /* top: 0;
     left: 0;
     width: 100vw;
     height: 10vh;
-    background: #222222;
+    background: #222222; */
+
+}
+
+.nav ul li {
+    /* display:flex */
+    /* visibility: hidden; */
+
 }
 
 .nav__link {
-    display: block;
+    /* display: block;
     padding: 12px 18px;
     text-decoration: none;
     color: #eeeeee;
-    font-weight: 500;
+    font-weight: 500; */
 }
 
 .nav__link:hover {
-    background: rgba(255, 255, 255, 0.05);
+    /* background: rgba(255, 255, 255, 0.05); */
 }
 
 #app {
-    margin: 2em;
+    /* margin: 2em;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 500; */
 }
 
 a {
-    color: #009579;
+    /* color: #009579; */
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    /* margin: 100px auto 100px 150px; */
+    font-size: 100%;
+    font-weight: bold;
+}
+
+.collectionContainer.formContainer {
+    margin: 50px auto 50px auto;
+}
+
+.collectionForm .inputField .btnNewBook {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.containerNewCategory{
+    margin-left:auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    /* vertical-align: center; */
+    font-size: 75%;
+    justify-content: center;
+
+
+}
+.containerNewCategory .inputLbl{
+    margin-bottom: 1.5%;
+    margin-top: auto;
+    
+}
+
+.containerNewCategory .btnAddCategory{
+    justify-items: center;
+    width: 50%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-weight: bold;
+    font-size: 100%;
+    background-color: #9dd1f1;
+    cursor: pointer;
+}
+
+.formContainer .formTitle {
+    font-size: 140%;
+}
+
+.formContainer .userInput {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formContainer .input {
+    margin-top: 2px;
+    font-size: 120%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    /* width: 60%; */
+}
+
+.formContainer .input:focus {
+    border-bottom: 1px solid #9dd1f1;
+}
+
+.formContainer .btnForm {
+    width: 15%;
+    min-width: 100px;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 100%;
+    background-color: #9dd1f1;
+    cursor: pointer;
+}
+
+.formContainer .errorInfo {
+    margin-top: 15px;
+    color: red;
+    font-weight: 400;
+    margin-left: 0;
+    width: 100%;
+}
+.singOutItem{
+    margin-right: 0;
+}
+.inputField.userInput.lastUserInput{
+    margin-top: 10px;
+}
+@media (max-width:540px){
+    .nav{
+        justify-content: center;
+    }
+    .userNameSpan{
+        visibility: hidden;
+    }
+    .navSpan{
+        position: absolute
+
+    }
+    .singOutItem{
+        /* margin-right: auto; */
+    }
+    .inputNewCat{
+        width: 51%;
+    }
 }
