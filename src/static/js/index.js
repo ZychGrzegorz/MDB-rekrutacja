@@ -11,14 +11,15 @@ import { logoutScript } from './logic/logoutScript.js';
 import { dashboardScript } from './logic/dashboardScript.js';
 import LogoutView from './views/LogoutView.js';
 import { noPageScript } from './logic/noPageScript.js';
+import { bookScript } from './logic/bookScript.js';
 
 const authNav = document.querySelectorAll('.authNav');
 const nonAuthNav = document.querySelectorAll('.nonAuthNav');
 const userNameSpan = document.querySelector('.userNameSpan');
 auth.onAuthStateChanged((user) => {
-  console.log(user);
+  // console.log(user);
   if (user) {
-    console.log(user.uid);
+    // console.log(user.uid);
 
     nonAuthNav.forEach((el) => {
       el.style.display = 'none';
@@ -26,12 +27,11 @@ auth.onAuthStateChanged((user) => {
     authNav.forEach((el) => {
       el.style.display = 'block';
     });
-    console.log('uzytkownik zalogowany');
+    console.log('user logged in');
     db.collection('users')
       .doc(user.uid)
       .get()
       .then((snapshot) => {
-        console.log(snapshot.data());
         userNameSpan.innerText = snapshot.data().Name;
       });
   } else {
@@ -41,19 +41,19 @@ auth.onAuthStateChanged((user) => {
     nonAuthNav.forEach((el) => {
       el.style.display = 'block';
     });
-    console.log('uzytkownik nie jest zalogowany');
+    console.log('user is not logged in');
   }
 });
 
 const pathToRegex = (path) =>
   new RegExp('^' + path.replace(/\//g, '\\/').replace(/:\w+/g, '(.+)') + '$');
+
 const getParams = (match) => {
   const values = match.result.slice(1);
   const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map((result) => result[1]);
 
   return Object.fromEntries(
     keys.map((key, i) => {
-      // console.log(key, i);
       return [key, values[i]];
     })
   );
@@ -74,7 +74,7 @@ const router = async () => {
       view: BooksView,
     },
     {
-      path: '/books/:id',
+      path: '/book/:id',
       view: BookView,
     },
     {
@@ -94,52 +94,60 @@ const router = async () => {
       view: NoPageView,
     },
   ];
-  //test each route for potetntial match
+
   const potentialMatches = routes.map((route) => {
     return {
       route: route,
       result: location.pathname.match(pathToRegex(route.path)),
     };
   });
+
   let match = potentialMatches.find((potentialMatch) => potentialMatch.result !== null);
+
   if (!match) {
+    console.log(match);
     match = {
       route: routes[0],
       result: [location.pathname],
     };
   }
+
   const view = new match.route.view(getParams(match));
 
   document.querySelector('#app').innerHTML = await view.getHtml();
 
-  switch (location.pathname) {
-    case '/signup': {
-      registerScript();
-      break;
-    }
-    case '/signin': {
-      loginScript();
-      break;
-    }
-    case '/signout': {
-      logoutScript();
-      break;
-    }
-    case '/': {
-      dashboardScript();
-      break;
-    }
-    case '/nopagefound': {
-      setTimeout(() => {
-        navigateTo('/');
-      }, 2000);
-      break;
-    }
-    default: {
-      noPageScript();
+  if (location.pathname.match('/book/(.+)$')) {
+    bookScript();
+  } else {
+    switch (location.pathname) {
+      case '/signup': {
+        registerScript();
+        break;
+      }
+      case '/signin': {
+        loginScript();
+        break;
+      }
+      case '/signout': {
+        logoutScript();
+        break;
+      }
+      case '/': {
+        dashboardScript();
+        break;
+      }
+      case '/nopagefound': {
+        setTimeout(() => {
+          navigateTo('/');
+        }, 2000);
+        break;
+      }
 
-      //nie ma takiej strony
-      break;
+      default: {
+        noPageScript();
+
+        break;
+      }
     }
   }
 };

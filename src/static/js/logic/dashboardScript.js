@@ -40,6 +40,7 @@ const dashboardScript = () => {
             BooksCategory: catData,
           });
           select.innerHTML = '';
+          newCatInput.value = '';
           renderSelect();
         } else {
           alert('Add category input is empty');

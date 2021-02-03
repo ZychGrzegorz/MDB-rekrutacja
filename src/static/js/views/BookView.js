@@ -3,15 +3,15 @@ import {} from '../index.js';
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle('Books View');
+    this.setTitle('Book id');
+    this.number = location.pathname.slice(6);
   }
 
   async getHtml() {
-    addToIndex('ViewFromBooksView');
     return `
-    <h1>Welcome Books</h1>
-    <p>POOOOOOOOOOST</p>
-    <a href='/books' class="nav__link" data-link>books</a>
+    <h1>This is Book ${this.number}</h1>
+    <p>Book details </p>
+    <p>Go back to your <a href='/' class="nav__link" data-link>collection</a></p>
       `;
   }
 }
