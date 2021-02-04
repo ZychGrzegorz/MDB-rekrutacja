@@ -31,6 +31,7 @@ const registerScript = () => {
               Password: password,
               BooksCategory: ['Crime story', 'Sci fi', 'Fantasy', 'Poetry', 'Drama', 'Science'],
               BooksCollection: [],
+              SignUp: new Date().toLocaleString(),
             })
             .then(() => {
               console.log('success');

@@ -82,6 +82,17 @@ const dashboardScript = () => {
       await db.collection('users').doc(user.uid).update({
         BooksCollection: booksData,
       });
+      inputSearch.value = '';
+    };
+
+    const filterBooks = (books) => {
+      if (books) {
+        return books.filter(
+          (book) =>
+            book.title.toLowerCase().includes(inputSearch.value.toLowerCase()) ||
+            book.author.toLowerCase().includes(inputSearch.value.toLowerCase())
+        );
+      }
     };
 
     const renderColection = (books) => {
@@ -97,17 +108,13 @@ const dashboardScript = () => {
         });
       }
 
-      const filterBooks = (books) => {
-        console.log(books);
-      };
-
-      //Here must be called function filter filterBooks(books)
-      filterBooks(books);
+      books = filterBooks(books);
 
       booksContainer.innerHTML = '';
 
       if (books) {
         books.map((el) => {
+          // console.log(el);
           const containerBook = document.createElement('div');
           containerBook.classList.add('containerBook');
           booksContainer.appendChild(containerBook);
@@ -127,11 +134,15 @@ const dashboardScript = () => {
           const spanPriority = document.createElement('span');
           spanPriority.classList.add('prioritySpan');
           spanPriority.innerText = 'Priority: ' + el.priority;
+          // const spanId = document.createElement('span');
+          // spanId.classList.add('idSpan');
+          // spanId.innerText = 'Id: ' + el.id;
 
           bookData.appendChild(spanTitle);
           bookData.appendChild(spanAuthor);
           bookData.appendChild(spanCategory);
           bookData.appendChild(spanPriority);
+          // bookData.appendChild(spanId);
 
           const bookActionsContainer = document.createElement('div');
           bookActionsContainer.classList.add('bookActionsContainer');
@@ -148,6 +159,28 @@ const dashboardScript = () => {
           btnDel.setAttribute('src', '/static/img/x.svg');
           bookActionsContainer.appendChild(btnEdit);
           bookActionsContainer.appendChild(btnDel);
+
+          containerBook.setAttribute('id', el.id);
+          containerBook.addEventListener(
+            'click',
+            (e) => {
+              console.log(e.target);
+              console.log(el.id);
+              navigateTo('/book/' + el.id);
+              e.stopPropagation();
+            },
+            false
+          );
+          btnEdit.addEventListener('click', (e) => {
+            e.stopPropagation();
+            console.log(el.id);
+          });
+          btnDel.addEventListener('click', (e) => {
+            console.log('delete');
+            e.stopPropagation();
+
+            // navigateTo('/book/' + el.id);
+          });
         });
       }
     };
@@ -159,7 +192,6 @@ const dashboardScript = () => {
         .get()
         .then((snapshot) => {
           booksCollection = snapshot.data().BooksCollection;
-          // console.log(booksCollection);
           renderData = booksCollection;
         });
       renderColection(renderData);
@@ -172,6 +204,7 @@ const dashboardScript = () => {
           author: authorInput.value,
           category: select.value,
           priority: selectPriority.value,
+          id: +(Date.now().toString().slice(8) + Math.floor(Math.random() * 100000000)),
         };
         e.preventDefault();
         await addBookToDataBase(book);
@@ -185,9 +218,8 @@ const dashboardScript = () => {
       renderColection(renderData);
     });
 
-    inputSearch.addEventListener('oninput', () => {
-      // console.log(inputSearch.value);
-      filterBooks(books);
+    inputSearch.addEventListener('input', () => {
+      renderColection(renderData);
     });
 
     getBooksCollection();
