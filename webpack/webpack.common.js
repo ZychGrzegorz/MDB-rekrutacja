@@ -11,35 +11,27 @@ module.exports = {
   },
   output: {
     path: Path.join(__dirname, '../dist'),
-    filename: './static/[name].js'
+    filename: './static/[name].js',
   },
   plugins: [
-    new Webpack.ProvidePlugin({
-      mdb: 'mdb',
-    }),
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../src/index.html') },
       { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
     ]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
-    path: Path.join(__dirname, '../dist'),
+      path: Path.join(__dirname, '../dist'),
 
       filename: './static/[name].css',
     }),
   ],
-  resolve: {
-    alias: {
-      '~': Path.resolve(__dirname, '../src'),
-      mdb: Path.join(__dirname, '../node_modules/mdb-ui-kit'),
-    },
-  },
+
   module: {
     rules: [
       {
-        test: /\.mjs$/,
-        include: /node_modules/,
-        type: 'javascript/auto',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
       },
       {
         test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,

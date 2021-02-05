@@ -1,12 +1,15 @@
 {
   "name": "mdb-webpack-starter",
   "version": "3.0.0",
+  "main": "./server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
     "startMDB": "cross-env NODE_ENV=development webpack-dev-server --config webpack/mdb/webpack.config.mdb.dev.js --open",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
+    "buildOne": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "buildMDB": "cross-env NODE_ENV=production webpack --config webpack/mdb/webpack.config.mdb.prod.js --colors",
     "getMDBsrc": "node getMDBsrc",
+    "server": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open node server.js",
     "test": "jest",
     "lint": "lint-staged && pretty-quick --staged",
     "heroku-postbuild": "npm install && npm run build "
@@ -83,8 +86,10 @@
     "webpack-dev-server": "^3.11.0",
     "webpack-fix-style-only-entries": "^0.5.1",
     "webpack-merge": "^4.2.2"
+    
   },
   "dependencies": {
+    "fetch-with-proxy": "^3.0.1",
     "@popperjs/core": "^2.6.0",
     "bootstrap": "^4.6.0",
     "chart.js": "^2.9.4",

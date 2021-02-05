@@ -1,5 +1,5 @@
 import DashboardView from './views/DashboardView.js';
-import BooksView from './views/BooksView.js';
+import SearchView from './views/SearchView.js';
 import BookView from './views/BookView.js';
 import LoginView from './views/LoginView.js';
 import RegisterView from './views/RegisterView.js';
@@ -12,7 +12,7 @@ import { dashboardScript } from './logic/dashboardScript.js';
 import LogoutView from './views/LogoutView.js';
 import { noPageScript } from './logic/noPageScript.js';
 import { bookScript } from './logic/bookScript.js';
-import { booksScript } from './logic/booksScript.js';
+import { searchScript } from './logic/searchScript.js';
 
 const authNav = document.querySelectorAll('.authNav');
 const nonAuthNav = document.querySelectorAll('.nonAuthNav');
@@ -72,7 +72,7 @@ const router = async () => {
 
     {
       path: '/search',
-      view: BooksView,
+      view: SearchView,
     },
     {
       path: '/book/:id',
@@ -134,7 +134,7 @@ const router = async () => {
         break;
       }
       case '/search': {
-        booksScript();
+        searchScript();
         break;
       }
       case '/': {

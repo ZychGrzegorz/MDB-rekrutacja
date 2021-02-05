@@ -115,7 +115,7 @@ a {
     border-bottom: 1px solid #9dd1f1;
 }
 
-.formContainer .btnForm {
+.formContainer .btnForm, .btnSubmitEdit {
     width: 15%;
     min-width: 100px;
     border: none;
@@ -199,9 +199,53 @@ a {
     max-width: 80%;
     overflow: hidden;
 }
-/* .idSpan{
-    font-size: 80%;
-} */
+
+.form-group.search-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.form-group.search-form .btnSearchBook{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+    width: 40%;
+}
+.searchInput .inputLbl{
+margin-bottom:1%;
+margin-top:auto;
+
+}
+.btn.btnForm.btnSubmitEdit {
+    margin-top:10px;
+    width: 50%;
+}
+.bookData{
+    display:flex;
+    flex-direction: column;
+}
+.searchBooksCollectionContainer{
+margin-top: 10px;
+
+}
+.searchBooksCollectionContainer{
+    width:70%;
+    margin-right: 20%; 
+}
+.searchBooksCollectionContainer .bookData{
+    display: flex;
+    flex-direction: column;
+
+}
+.searchBooksCollectionContainer .bookData .editInfoRow{
+margin-top: 10px;
+}
+.searchBooksCollectionContainer p{
+    margin-top: 15px;
+
+}
 
 
 @media (max-width:540px){
