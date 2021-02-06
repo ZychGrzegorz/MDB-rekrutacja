@@ -1,7 +1,5 @@
 import AbstractView from './AbstractView.js';
 
-import {} from '../index.js';
-
 export default class extends AbstractView {
   constructor(params) {
     super(params);
@@ -11,7 +9,7 @@ export default class extends AbstractView {
   async getHtml() {
     return `
     <div class=" container login-box mt-3 formContainer">
-        <h1>Sign in</h1>
+        <h1 class='pageTitle'>Sign in</h1>
         <form class="signInForm login-form" id="login-form">
           <div class='inputField userInput'>
               <label for="email" class='emailLbl inputLbl'>Email</label>

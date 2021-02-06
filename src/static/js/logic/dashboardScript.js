@@ -110,11 +110,9 @@ const dashboardScript = () => {
 
       books = filterBooks(books);
 
-      booksContainer.innerHTML = '';
-
-      if (books) {
+      if (books && booksContainer) {
+        booksContainer.innerHTML = '';
         books.map((el) => {
-          // console.log(el);
           const containerBook = document.createElement('div');
           containerBook.classList.add('containerBook');
           booksContainer.appendChild(containerBook);
@@ -134,15 +132,11 @@ const dashboardScript = () => {
           const spanPriority = document.createElement('span');
           spanPriority.classList.add('prioritySpan');
           spanPriority.innerText = 'Priority: ' + el.priority;
-          // const spanId = document.createElement('span');
-          // spanId.classList.add('idSpan');
-          // spanId.innerText = 'Id: ' + el.id;
 
           bookData.appendChild(spanTitle);
           bookData.appendChild(spanAuthor);
           bookData.appendChild(spanCategory);
           bookData.appendChild(spanPriority);
-          // bookData.appendChild(spanId);
 
           const bookActionsContainer = document.createElement('div');
           bookActionsContainer.classList.add('bookActionsContainer');
@@ -164,22 +158,42 @@ const dashboardScript = () => {
           containerBook.addEventListener(
             'click',
             (e) => {
-              console.log(e.target);
-              console.log(el.id);
               navigateTo('/book/' + el.id);
               e.stopPropagation();
             },
             false
           );
           btnEdit.addEventListener('click', (e) => {
+            navigateTo('/book/' + el.id);
             e.stopPropagation();
-            console.log(el.id);
           });
           btnDel.addEventListener('click', (e) => {
             console.log('delete');
             e.stopPropagation();
 
-            // navigateTo('/book/' + el.id);
+            db.collection('users')
+              .doc(user.uid)
+              .get()
+              .then(async (snapshot) => {
+                const userBooks = snapshot.data().BooksCollection;
+
+                for (let book in userBooks) {
+                  if (userBooks[book].id === el.id) {
+                    const newBooksCollection = userBooks.filter((book) => book.id !== el.id);
+
+                    await db
+                      .collection('users')
+                      .doc(user.uid)
+                      .update({
+                        BooksCollection: newBooksCollection,
+                      })
+                      .then(async () => {
+                        console.log('Books collection updated');
+                        await getBooksCollection();
+                      });
+                  }
+                }
+              });
           });
         });
       }
@@ -194,6 +208,19 @@ const dashboardScript = () => {
           booksCollection = snapshot.data().BooksCollection;
           renderData = booksCollection;
         });
+      const collectionCounter = document.querySelector('.booksCounter');
+      let singleOrMulti;
+      if (renderData.length > 1) {
+        singleOrMulti = 'books';
+      } else if (renderData.length == 1) {
+        singleOrMulti = 'book';
+      } else {
+        singleOrMulti = '';
+      }
+      if (collectionCounter) {
+        collectionCounter.innerText = `Your collection: ${renderData.length} ${singleOrMulti}`;
+      }
+
       renderColection(renderData);
     };
 

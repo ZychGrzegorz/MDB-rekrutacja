@@ -9,11 +9,11 @@ export default class extends AbstractView {
   async getHtml() {
     return `
     <div class="container dashboard-box mt-3 collectionContainer formContainer">
-      <h1>Your collection</h1>
+      <h1 class='dashboardTitle pageTitle'>Your collection</h1>
       <div class="row">
         <div class='col-md-6'>
             <form class='collectionForm' id='collectionForm'>
-              <h4 class='formTitle'>Add a new book</h4>
+              <h4 class='formTitle '>Add a new book</h4>
               <div class='inputField userInput'>
                 <label for='title' class='titleLbl inputLbl'>Title:</label>
                 <input type='text' id='title' class='input inputTitle' required>
@@ -47,7 +47,7 @@ export default class extends AbstractView {
           </form>
           </div>
           <div class='col-md-6'>
-          <h4 class='formTitle'>Your collection:</h4>
+          <h4 class='formTitle booksCounter'>Your collection:</h4>
           <label for='selectSort' class='selectSortLbl inputLbl'>Sort by:</label>
             <select class='selectSort' id='selectSort' name='selectSort'>
                   <option value='title' selected>Title</option>

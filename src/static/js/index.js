@@ -1,5 +1,5 @@
 import DashboardView from './views/DashboardView.js';
-import BooksView from './views/BooksView.js';
+import SearchView from './views/SearchView.js';
 import BookView from './views/BookView.js';
 import LoginView from './views/LoginView.js';
 import RegisterView from './views/RegisterView.js';
@@ -12,16 +12,14 @@ import { dashboardScript } from './logic/dashboardScript.js';
 import LogoutView from './views/LogoutView.js';
 import { noPageScript } from './logic/noPageScript.js';
 import { bookScript } from './logic/bookScript.js';
-import { booksScript } from './logic/booksScript.js';
+import { searchScript } from './logic/searchScript.js';
 
 const authNav = document.querySelectorAll('.authNav');
 const nonAuthNav = document.querySelectorAll('.nonAuthNav');
 const userNameSpan = document.querySelector('.userNameSpan');
-auth.onAuthStateChanged((user) => {
-  // console.log(user);
-  if (user) {
-    // console.log(user.uid);
 
+auth.onAuthStateChanged((user) => {
+  if (user) {
     nonAuthNav.forEach((el) => {
       el.style.display = 'none';
     });
@@ -72,7 +70,7 @@ const router = async () => {
 
     {
       path: '/search',
-      view: BooksView,
+      view: SearchView,
     },
     {
       path: '/book/:id',
@@ -116,7 +114,6 @@ const router = async () => {
   const view = new match.route.view(getParams(match));
 
   document.querySelector('#app').innerHTML = await view.getHtml();
-  // console.log('/book/\\w*');
   if (location.pathname.match('/book/(.+)')) {
     bookScript();
   } else {
@@ -134,7 +131,7 @@ const router = async () => {
         break;
       }
       case '/search': {
-        booksScript();
+        searchScript();
         break;
       }
       case '/': {

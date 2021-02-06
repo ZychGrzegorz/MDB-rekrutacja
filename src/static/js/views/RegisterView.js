@@ -9,10 +9,8 @@ export default class extends AbstractView {
 
   async getHtml() {
     return await `
-    
-
     <div class="container register-box mt-3 formContainer">
-      <h1>Sign up</h1>
+      <h1 class='pageTitle'>Sign up</h1>
       <form autocomplete="off" class="form-group register-form" id="signup-form">
         <div class='inputField userInput'>
           <label for="Name" class='nameLbl inputLbl'>Name</label>

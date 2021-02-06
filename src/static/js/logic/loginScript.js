@@ -1,5 +1,5 @@
 import { navigateTo } from '../index.js';
-import { auth, db } from '../firebaseConfig.js';
+import { auth } from '../firebaseConfig.js';
 const loginScript = () => {
   auth.onAuthStateChanged((user) => {
     if (user) {
