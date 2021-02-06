@@ -6,9 +6,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --config webpack/webpack.config.dev.js --open",
     "startMDB": "cross-env NODE_ENV=development webpack-dev-server --config webpack/mdb/webpack.config.mdb.dev.js --open",
     "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
-    "buildOne": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js --colors",
     "buildMDB": "cross-env NODE_ENV=production webpack --config webpack/mdb/webpack.config.mdb.prod.js --colors",
-    
     "serverStart": "cross-env NODE_ENV=development node server.js",
     "buildServer": "cross-env NODE_ENV=production node server.js",
     "heroku-postbuild": "npm install && npm run buildServer"
