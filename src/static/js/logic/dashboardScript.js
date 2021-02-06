@@ -14,7 +14,6 @@ const dashboardScript = () => {
 
   let renderData = null;
   let sortType = 'title';
-  let totalBooks;
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -110,10 +109,9 @@ const dashboardScript = () => {
       }
 
       books = filterBooks(books);
-      if (booksContainer) {
+
+      if (books && booksContainer) {
         booksContainer.innerHTML = '';
-      }
-      if (books) {
         books.map((el) => {
           const containerBook = document.createElement('div');
           containerBook.classList.add('containerBook');
@@ -168,26 +166,21 @@ const dashboardScript = () => {
           btnEdit.addEventListener('click', (e) => {
             navigateTo('/book/' + el.id);
             e.stopPropagation();
-            console.log(el.id);
           });
           btnDel.addEventListener('click', (e) => {
             console.log('delete');
             e.stopPropagation();
-
-            console.log(el.id);
 
             db.collection('users')
               .doc(user.uid)
               .get()
               .then(async (snapshot) => {
                 const userBooks = snapshot.data().BooksCollection;
-                console.log(userBooks);
+
                 for (let book in userBooks) {
                   if (userBooks[book].id === el.id) {
-                    console.log(el);
-
                     const newBooksCollection = userBooks.filter((book) => book.id !== el.id);
-                    console.log(newBooksCollection);
+
                     await db
                       .collection('users')
                       .doc(user.uid)

@@ -2,8 +2,6 @@ import { navigateTo } from '../index.js';
 import { auth, db } from '../firebaseConfig.js';
 
 const searchScript = async () => {
-  let searchResult;
-  //   navigateTo('/nopagefound');
   const creatingCards = () => {
     const booksCollectionContainer = document.querySelector('searchBooksCollectionContainer');
     const containerBook = document.createElement('div');
@@ -19,36 +17,45 @@ const searchScript = async () => {
     const spanAuthor = document.createElement('span');
     spanAuthor.classList.add('authorSpan');
     spanAuthor.innerText = el.author ? 'Author: ' + el.author : 'Author: no data';
-    const spanCategory = document.createElement('span');
-    spanCategory.classList.add('categorySpan');
-    spanCategory.innerText = 'Category: ' + el.category;
-    const spanPriority = document.createElement('span');
-    spanPriority.classList.add('prioritySpan');
-    spanPriority.innerText = 'Priority: ' + el.priority;
 
     bookData.appendChild(spanTitle);
     bookData.appendChild(spanAuthor);
-    bookData.appendChild(spanCategory);
-    bookData.appendChild(spanPriority);
 
     const bookActionsContainer = document.createElement('div');
     bookActionsContainer.classList.add('bookActionsContainer');
     containerBook.appendChild(bookActionsContainer);
   };
-  const searchBook = () => {
-    console.log('search');
-    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
-    const url = 'http://data.bn.org.pl/api/bibs.json?title=harry'; // site that doesn’t send Access-Control-*
-    fetch(proxyurl + url) // https://cors-anywhere.herokuapp.com/https://example.com
+  const searchForm = document.querySelector('.search-form');
+  const searchInput = document.querySelector('.searchInput');
+  searchForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    searchBook(searchInput.value);
+  });
+
+  const searchBook = (book) => {
+    const bookAddress = book.split(' ').join('+');
+
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    const url = 'http://data.bn.org.pl/api/bibs.json?title=';
+    fetch(proxyUrl + url + bookAddress) // https://cors-anywhere.herokuapp.com/https://example.com
       .then((response) => response.text())
       .then((contents) => () => {
         console.log('success');
         console.log(contents);
       })
-      .catch(() => console.log('Can’t access ' + url + ' response. Blocked by browser?'));
+      .catch(() =>
+        console.log('Can’t access ' + url + bookAddress + ' response. Blocked by browser?')
+      );
   };
+  const btnAdd = document.querySelectorAll('.btnAdd');
 
-  searchBook();
+  btnAdd.forEach((el) => {
+    el.addEventListener('click', () => {
+      alert('This book would be added to your collection');
+      navigateTo('/');
+    });
+  });
 };
 
 export { searchScript };

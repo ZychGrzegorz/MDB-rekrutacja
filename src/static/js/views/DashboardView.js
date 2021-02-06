@@ -9,7 +9,7 @@ export default class extends AbstractView {
   async getHtml() {
     return `
     <div class="container dashboard-box mt-3 collectionContainer formContainer">
-      <h1>Your collection</h1>
+      <h1 class='dashboardTitle pageTitle'>Your collection</h1>
       <div class="row">
         <div class='col-md-6'>
             <form class='collectionForm' id='collectionForm'>

@@ -17,11 +17,9 @@ import { searchScript } from './logic/searchScript.js';
 const authNav = document.querySelectorAll('.authNav');
 const nonAuthNav = document.querySelectorAll('.nonAuthNav');
 const userNameSpan = document.querySelector('.userNameSpan');
-auth.onAuthStateChanged((user) => {
-  // console.log(user);
-  if (user) {
-    // console.log(user.uid);
 
+auth.onAuthStateChanged((user) => {
+  if (user) {
     nonAuthNav.forEach((el) => {
       el.style.display = 'none';
     });
@@ -116,7 +114,6 @@ const router = async () => {
   const view = new match.route.view(getParams(match));
 
   document.querySelector('#app').innerHTML = await view.getHtml();
-  // console.log('/book/\\w*');
   if (location.pathname.match('/book/(.+)')) {
     bookScript();
   } else {

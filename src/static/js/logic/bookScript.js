@@ -13,8 +13,6 @@ const bookScript = () => {
   const categorySelect = document.querySelector('.editSelectCategory');
   const prioritySelect = document.querySelector('.editSelectPriority');
   const btnSubmitEdit = document.querySelector('.editBookForm');
-  //   jesli nie ma takiej ksiazki w bazie to
-  //   navigateTo('/nopagefound');
 
   auth.onAuthStateChanged((user) => {
     const renderSelect = () => {
@@ -28,10 +26,9 @@ const bookScript = () => {
             booksId.push(userData.BooksCollection[book].id);
           }
           if (!booksId.includes(+location.pathname.split('/')[2])) {
-            console.log('brak w bazie');
+            console.log('not in data base');
             navigateTo('/nopagefound');
           }
-          // console.log(userData.BooksCollection);
           if (userBooksCategory) {
             for (let el in userBooksCategory) {
               const option = document.createElement('option');

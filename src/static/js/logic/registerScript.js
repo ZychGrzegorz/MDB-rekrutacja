@@ -15,7 +15,11 @@ const registerScript = () => {
       const name = signUpForm['name'].value;
       const email = signUpForm['email'].value;
       const password = signUpForm['password'].value;
-      const user = { name, email, password };
+      const user = {
+        name,
+        email,
+        password,
+      };
       console.log(user);
 
       signUpForm.reset();

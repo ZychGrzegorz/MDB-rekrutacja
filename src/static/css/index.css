@@ -1,268 +1,266 @@
+@import "./reset.css";
+
+.navDisplayNone {
+	display: none;
+}
+
 body {
-    --nav-width: 200px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
-    line-height: 1;
+	--nav-width: 200px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 18px;
+	line-height: 1;
 }
 
-.nav {
-    /* z-index: -1 */
-    /* visibility: hidden; */
-    /* top: 0;
-    left: 0;
-    width: 100vw;
-    height: 10vh;
-    background: #222222; */
-
-}
-
-.nav ul li {
-    /* display:flex */
-    /* visibility: hidden; */
-
-}
-
-.nav__link {
-    /* display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #eeeeee;
-    font-weight: 500; */
-}
-
-.nav__link:hover {
-    /* background: rgba(255, 255, 255, 0.05); */
-}
-
-#app {
-    /* margin: 2em;
-    line-height: 1.5;
-    font-weight: 500; */
-}
-
-a {
-    /* color: #009579; */
+.navbar {
+	height: 50px;
 }
 
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    /* margin: 100px auto 100px 150px; */
-    font-size: 100%;
-    font-weight: bold;
-}
-
-.collectionContainer.formContainer {
-    margin: 50px auto 50px auto;
-}
-
-.collectionForm .inputField .btnNewBook {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.containerNewCategory{
-    /* margin-left:auto; */
-    margin-right: auto;
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    /* vertical-align: center; */
-    font-size: 75%;
-    justify-content: start;
-
-
-}
-.containerNewCategory .inputLbl{
-    margin-bottom: 1.5%;
-    margin-top: auto;
-    
-}
-
-.containerNewCategory .btnAddCategory{
-    justify-items: center;
-    width: 50%;
-    border: none;
-    padding: 6px;
-    border-radius: 5px;
-    margin-top: 5px;
-    font-weight: bold;
-    font-size: 100%;
-    background-color: #9dd1f1;
-    cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	font-size: 100%;
+	font-weight: bold;
 }
 
 .formContainer .formTitle {
-    font-size: 140%;
+	font-size: 140%;
 }
 
 .formContainer .userInput {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
+	margin-top: 40px;
+	display: flex;
+	flex-direction: column;
 }
 
 .formContainer .input {
-    margin-top: 2px;
-    font-size: 120%;
-    outline: none;
-    border: none;
-    border-bottom: 1px solid black;
-    /* width: 60%; */
+	margin-top: 2px;
+	font-size: 120%;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid black;
 }
 
 .formContainer .input:focus {
-    border-bottom: 1px solid #9dd1f1;
+	border-bottom: 1px solid #9dd1f1;
 }
 
-.formContainer .btnForm, .btnSubmitEdit {
-    width: 15%;
-    min-width: 100px;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 100%;
-    background-color: #9dd1f1;
-    cursor: pointer;
+.formContainer .btnForm {
+	width: 15%;
+	min-width: 100px;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 100%;
+	background-color: #9dd1f1;
+	cursor: pointer;
 }
 
 .formContainer .errorInfo {
-    margin-top: 15px;
-    color: red;
-    font-weight: 400;
-    margin-left: 0;
-    width: 100%;
-}
-.singOutItem{
-    margin-right: 0;
-}
-.inputField.userInput.lastUserInput{
-    margin-top: 10px;
+	margin-top: 15px;
+	color: red;
+	font-weight: 400;
+	margin-left: 0;
+	width: 100%;
 }
 
-.booksCollectionContainer{
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid red; */
-
-}
-.containerBook{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-    margin: 10px auto 10px 0px;
-    border: 1px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.bookData{
-    display: flex;
-    flex-direction: column;
-    /* font-size: 75%; */
-    font-weight: normal;
-    max-width: 75%;
-    overflow: hidden;
-}
-.bookData span{
-    white-space:nowrap;
-    margin: 5px
+.collectionContainer.formContainer {
+	margin: 50px auto 50px auto;
 }
 
-.bookActionsContainer{
-    display: flex;
-    vertical-align: middle;
-    flex-basis: auto;
-    align-items: center;
-    justify-content: center;
+.collectionForm .inputField .btnNewBook {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.btnEdit, .btnDelete{
-    /* flex-basis: auto; */
-    margin: 5px;
-    height: 20px; width: auto;
-}
-.btnEdit{
-    background-image: url('https://www.flaticon.com/svg/vstatic/svg/1159/1159633.svg?token=exp=1612374447~hmac=369c4acd7e8cb17ec93089def6b514a6');
-}
-.searchInputContainer{
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-}
-.inputSearchLbl{
-    margin-bottom: 1%;
-    margin-top: auto;
-}
-.inputSearch{
-    max-width: 80%;
-    overflow: hidden;
+.containerNewCategory {
+	margin-right: auto;
+	margin-top: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 75%;
+	justify-content: start;
 }
 
-.form-group.search-form{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+.containerNewCategory .inputLbl {
+	margin-bottom: 1.5%;
+	margin-top: auto;
 }
-.form-group.search-form .btnSearchBook{
-    margin-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50px;
-    width: 40%;
-}
-.searchInput .inputLbl{
-margin-bottom:1%;
-margin-top:auto;
 
+.containerNewCategory .btnAddCategory {
+	justify-items: center;
+	width: 50%;
+	border: none;
+	padding: 6px;
+	border-radius: 5px;
+	margin-top: 5px;
+	font-weight: bold;
+	font-size: 100%;
+	background-color: #9dd1f1;
+	cursor: pointer;
 }
+
+.btnSubmitEdit {
+	width: 15%;
+	min-width: 100px;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: bold;
+	font-size: 100%;
+	background-color: #9dd1f1;
+	cursor: pointer;
+}
+
+.container .pageTitle {
+	font-size: 2.5rem;
+}
+
+.singOutItem {
+	margin-right: 0;
+}
+
+.inputField.userInput.lastUserInput {
+	margin-top: 10px;
+}
+
+.booksCollectionContainer {
+	display: flex;
+	flex-direction: column;
+}
+
+.containerBook {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	margin: 10px auto 10px 0px;
+	border: 1px solid black;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.bookData {
+	display: flex;
+	flex-direction: column;
+	font-weight: normal;
+	max-width: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+}
+
+.bookData span {
+	white-space: nowrap;
+	margin: 5px;
+}
+
+.bookActionsContainer {
+	display: flex;
+	vertical-align: middle;
+	flex-basis: auto;
+	align-items: center;
+	justify-content: center;
+}
+
+.btnEdit,
+.btnAdd {
+	margin: 5px;
+	height: 20px;
+	width: auto;
+}
+
+.btnDelete {
+	margin: 5px;
+	height: 20px;
+	width: auto;
+}
+
+.searchInputContainer {
+	display: flex;
+	flex-wrap: nowrap;
+	flex-direction: row;
+	margin-top: 20px;
+}
+
+.searchLink {
+	margin-top: 30px;
+}
+
+.searchLbl {
+	margin-bottom: 1%;
+	margin-top: auto;
+}
+
+.searchInput {
+	max-width: 80%;
+	overflow: hidden;
+}
+
+.searchInput .inputLbl {
+	margin-bottom: 1%;
+	margin-top: auto;
+}
+
+.form-group.search-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
+
+.form-group.search-form .btnSearchBook {
+	margin-top: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 50px;
+	width: 40%;
+}
+
 .btn.btnForm.btnSubmitEdit {
-    margin-top:10px;
-    width: 50%;
-}
-.bookData{
-    display:flex;
-    flex-direction: column;
-}
-.searchBooksCollectionContainer{
-margin-top: 10px;
-
-}
-.searchBooksCollectionContainer{
-    width:70%;
-    margin-right: 20%; 
-}
-.searchBooksCollectionContainer .bookData{
-    display: flex;
-    flex-direction: column;
-
-}
-.searchBooksCollectionContainer .bookData .editInfoRow{
-margin-top: 10px;
-}
-.searchBooksCollectionContainer p{
-    margin-top: 15px;
-
+	margin-top: 10px;
+	width: 50%;
 }
 
+.searchBooksCollectionContainer {
+	margin-top: 10px;
+	width: 70%;
+	margin-right: 20%;
+}
 
-@media (max-width:540px){
-    .nav{
-        justify-content: center;
-    }
-    .userNameSpan{
-        visibility: hidden;
-    }
-    .navSpan{
-        position: absolute
+.searchBooksCollectionContainer .bookData {
+	display: flex;
+	flex-direction: column;
+}
 
-    }
-    .singOutItem{
-        /* margin-right: auto; */
-    }
-    .inputNewCat{
-        width: 51%;
-    }
+.searchBooksCollectionContainer .bookData .editInfoRow {
+	margin-top: 10px;
+}
+
+.searchBooksCollectionContainer p {
+	margin-top: 15px;
+}
+
+.booksCounter {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 540px) {
+	.nav {
+		justify-content: center;
+	}
+
+	.userNameSpan {
+		visibility: hidden;
+	}
+
+	.navSpan {
+		position: absolute;
+	}
+
+	.inputNewCat {
+		width: 51%;
+	}
 }

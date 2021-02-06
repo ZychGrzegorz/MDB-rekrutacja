@@ -11,25 +11,25 @@ module.exports = {
   },
   output: {
     path: Path.join(__dirname, '../dist'),
-    filename: './static/[name].js',
+    filename: './static/[name].min.js',
   },
   plugins: [
     new CopyWebpackPlugin([
       { from: Path.resolve(__dirname, '../src/index.html') },
-      { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
+      { from: Path.resolve(__dirname, '../src/static/img'), to: './static/img' },
     ]),
     new FixStyleOnlyEntriesPlugin(),
     new MiniCssExtractPlugin({
       path: Path.join(__dirname, '../dist'),
 
-      filename: './static/[name].css',
+      filename: './static/[name].min.css',
     }),
   ],
 
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.mjs$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },

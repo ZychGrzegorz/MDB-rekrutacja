@@ -1,20 +1,16 @@
 import AbstractView from './AbstractView.js';
-import {} from '../index.js';
+
 export default class extends AbstractView {
   constructor(params) {
     super(params);
-    this.setTitle('Book id');
+    this.setTitle('Book id: ' + location.pathname.slice(6));
     this.number = location.pathname.slice(6);
-    // this.thisBook = thisBook;
   }
 
   async getHtml() {
     return `
-    
-    
-  
     <div class="container searchBooksCollectionContainer">
-    <h1>This is Book: ${this.number}</h1>
+    <h1 class='pageTitle'>This is Book: ${this.number}</h1>
     <div class="container" id="1612397143542">
     <div class="bookData">
         <h4>Book details: </h4>
@@ -47,7 +43,7 @@ export default class extends AbstractView {
           </div>
 
           <div class='inputField userInput'>
-             <button type="submit" class="btn btnForm btnSubmitEdit ">Save edit</button>
+             <button type="submit" class="btn btnForm btnSubmitEdit ">Save</button>
           </div>    
            
           </div>
