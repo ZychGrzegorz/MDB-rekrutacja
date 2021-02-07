@@ -1,6 +1,8 @@
 # Single page application Vanilla JS 
 
-## This application allows to:
+
+
+### This application allows to:
 - signup new user,
 - login/logout,
 - add new book to your collection,
