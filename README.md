@@ -3,7 +3,7 @@
 
 
 ### This application allows to:
-- signup new user,
+- sign up new user,
 - login/logout,
 - add new book to your collection,
 - edit/remove your book,
