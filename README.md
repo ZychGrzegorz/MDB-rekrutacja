@@ -1,5 +1,8 @@
 # Single page application Vanilla JS 
 
+## Usage
+* Login: jane@example.com
+* Password: 123456
 
 
 ### This application allows to:
@@ -8,9 +11,6 @@
 - add a new book to your collection,
 - edit/remove your book,
 - add a new book category
-
-![SignUp](https://user-images.githubusercontent.com/50084927/107155164-1e946b00-6977-11eb-8cc4-36467d41061a.gif)
-![SignIn](https://user-images.githubusercontent.com/50084927/107155362-3e785e80-6978-11eb-9ccb-d84179aa8d9b.gif)
 
 ### Installation
 ```
@@ -38,3 +38,6 @@ npm run buildServer
 * Linting via [eslint-loader](https://github.com/MoOx/eslint-loader)
 * Code Formatting via [prettier](https://github.com/prettier/prettier)
 * Starter [MDB](https://github.com/mdbootstrap/mdb-ui-kit/)
+
+![SignUp](https://user-images.githubusercontent.com/50084927/107155164-1e946b00-6977-11eb-8cc4-36467d41061a.gif)
+![SignIn](https://user-images.githubusercontent.com/50084927/107155362-3e785e80-6978-11eb-9ccb-d84179aa8d9b.gif)
