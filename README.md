@@ -8,9 +8,11 @@
 ### This application allows to:
 - sign up a new user,
 - login/logout,
-- add a new book to your collection,
-- edit/remove your book,
-- add a new book category
+- add a new book to thr collection,
+- edit/remove the book,
+- add a new book category,
+- sorting the collection
+- searching for a book
 
 ### Installation
 ```
